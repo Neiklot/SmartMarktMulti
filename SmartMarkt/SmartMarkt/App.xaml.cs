@@ -7,16 +7,38 @@ using Xamarin.Forms;
 
 namespace SmartMarkt
 {
-	public partial class App : Application
-	{
-		public App ()
+	public partial class App : Application, ILoginManager
+    {
+        static ILoginManager loginManager;
+        public static App Current;
+
+        public App ()
 		{
-			InitializeComponent();
+            Current = this;
 
-			MainPage = new SmartMarkt.MainPage();
-		}
+            InitializeComponent();
 
-		protected override void OnStart ()
+            var isLoggedIn = Properties.ContainsKey("IsLoggedIn") ? (bool)Properties["IsLoggedIn"] : false;
+
+            // we remember if they're logged in, and only display the login page if they're not
+            if (isLoggedIn)
+                MainPage = new SmartMarkt.MainPage();
+            else
+                MainPage = new LoginModalPage(this);
+        }
+
+        public void ShowMainPage()
+        {
+            MainPage = new MainPage();
+        }
+
+        public void Logout()
+        {
+            Properties["IsLoggedIn"] = false; // only gets set to 'true' on the LoginPage
+            MainPage = new LoginModalPage(this);
+        }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
