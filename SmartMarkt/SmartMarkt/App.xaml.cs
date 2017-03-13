@@ -22,14 +22,14 @@ namespace SmartMarkt
 
             // we remember if they're logged in, and only display the login page if they're not
             if (isLoggedIn)
-                MainPage = new SmartMarkt.MainPage();
+                MainPage = new SmartMarkt.MainPage(this);
             else
                 MainPage = new LoginModalPage(this);
         }
 
         public void ShowMainPage()
         {
-            MainPage = new MainPage();
+            MainPage = new MainPage(this);
         }
 
         public void Logout()
