@@ -4,9 +4,5 @@
              xmlns:local="clr-namespace:SmartMarkt"
              x:Class="SmartMarkt.MainPage">
 
-    <Label Text="Hola Xamarin!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
 
 </ContentPage>

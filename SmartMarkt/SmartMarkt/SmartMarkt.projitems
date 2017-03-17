@@ -13,6 +13,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CreateAccountPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Customer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILoginManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoginModalPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoginPage.cs" />
