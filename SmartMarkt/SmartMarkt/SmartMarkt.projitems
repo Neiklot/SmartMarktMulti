@@ -13,13 +13,17 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CreateAccountPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Customer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SmartMarktDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILoginManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoginModalPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoginPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserEntryPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UsersPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">

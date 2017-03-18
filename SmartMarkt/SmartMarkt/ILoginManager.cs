@@ -6,5 +6,7 @@ namespace SmartMarkt
     {
         void ShowMainPage();
         void Logout();
+        void ShowUserEntryPage(ILoginManager ilm, SmartMarktDatabase database);
+        void ShowUsersPage(ILoginManager ilm, SmartMarktDatabase database);
     }
 }

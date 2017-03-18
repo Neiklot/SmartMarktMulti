@@ -6,9 +6,9 @@ namespace SmartMarkt
         public class LoginModalPage : CarouselPage
         {
             ContentPage login, create;
-            public LoginModalPage(ILoginManager ilm)
+            public LoginModalPage(ILoginManager ilm,SmartMarktDatabase database)
             {
-                login = new LoginPage(ilm);
+                login = new LoginPage(ilm,database);
                 create = new CreateAccountPage(ilm);
                 this.Children.Add(login);
                 this.Children.Add(create);
