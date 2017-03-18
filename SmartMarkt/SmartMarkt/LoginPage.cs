@@ -1,6 +1,8 @@
 ﻿using SQLite;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SmartMarkt
@@ -15,7 +17,7 @@ namespace SmartMarkt
         {
        
             var button = new Button { Text = "Login" };
-            button.Clicked += (sender, e) =>
+            button.Clicked += async (sender, e) =>
             {
                 if (String.IsNullOrEmpty(username.Text) || String.IsNullOrEmpty(password.Text))
                 {
@@ -23,10 +25,16 @@ namespace SmartMarkt
                 }
                 else
                 {
-
+                   string validated= await GetLoginValidation(username.Text, password.Text);
                     // REMEMBER LOGIN STATUS!
-                    App.Current.Properties["IsLoggedIn"] = true;
-                    ilm.ShowMainPage();
+                    if (validated.Equals("OK"))
+                    {
+                        App.Current.Properties["IsLoggedIn"] = true;
+                        ilm.ShowMainPage();
+                    }
+                    else {
+                        DisplayAlert("Validation Error", "Username or Password wrong", "Re-try");
+                    }
                 }
             };
             var create = new Button { Text = "View Accounts" };
@@ -51,8 +59,26 @@ namespace SmartMarkt
                 }
             };
         }
-        public void chekLogin(String username, String password)
+        public async Task<string> GetLoginValidation(string username,string password)
         {
+
+            var postData = new List<KeyValuePair<string, string>>();
+            postData.Add(new KeyValuePair<string, string>("username", username));
+            postData.Add(new KeyValuePair<string, string>("password", password));
+
+            var content = new System.Net.Http.FormUrlEncodedContent(postData);
+
+            var client = new System.Net.Http.HttpClient();
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            var address = $"http://192.168.1.105:8080/SmartMarkt/login"; 
+
+            var response = await client.PostAsync(address, content);
+
+            var validationCode = response.Content.ReadAsStringAsync().Result;
+
+            //var rootobject = JsonConvert.DeserializeObject<Rootobject>(airportJson);
+
+            return validationCode;
 
         }
 
@@ -67,6 +93,6 @@ namespace SmartMarkt
         //    }
         //}
 
-       
+
     }
 }
