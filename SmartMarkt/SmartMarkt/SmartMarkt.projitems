@@ -14,6 +14,11 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CreateAccountPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ISQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MenuListData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MenuListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MenuPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RootPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SmartMarktDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILoginManager.cs" />

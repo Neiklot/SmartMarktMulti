@@ -7,11 +7,13 @@ using Xamarin.Forms;
 
 namespace SmartMarkt
 {
-	public partial class MainPage : ContentPage
-	{
+    public partial class MainPage : ContentPage
+    {
         Entry productName, productDescription;
+        static MasterDetailPage MDPage;
+
         public MainPage(ILoginManager ilm)
-		{
+        {
             InitializeComponent();
             var logout = new Button
             {
@@ -49,7 +51,6 @@ namespace SmartMarkt
             productName = new Entry { Text = "" };
             productDescription = new Entry { Text = "" };
 
-
             this.Content = new StackLayout
             {
                 Padding = new Thickness(10, 40, 10, 10),
@@ -65,5 +66,10 @@ namespace SmartMarkt
                 }
             };
         }
-	}
+        //void OnClick(object sender, EventArgs e)
+        //{
+        //    ToolbarItem tbi = (ToolbarItem)sender;
+        //    this.DisplayAlert("Selected!", tbi.Name, "OK");
+        //}
+    }
 }

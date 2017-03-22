@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -25,16 +26,16 @@ namespace SmartMarkt
                 }
                 else
                 {
-                   string validated= await GetLoginValidation(username.Text, password.Text);
+               //    string validated= await GetLoginValidation(username.Text, password.Text);
                     // REMEMBER LOGIN STATUS!
-                    if (validated.Equals("OK"))
-                    {
+                  //  if (validated.Equals("OK"))
+                  //  {
                         App.Current.Properties["IsLoggedIn"] = true;
                         ilm.ShowMainPage();
-                    }
-                    else {
-                        DisplayAlert("Validation Error", "Username or Password wrong", "Re-try");
-                    }
+                  //  }
+                 //   else {
+                     //   DisplayAlert("Validation Error", "Username or Password wrong", "Re-try");
+                  //  }
                 }
             };
             var create = new Button { Text = "View Accounts" };
@@ -66,13 +67,14 @@ namespace SmartMarkt
             postData.Add(new KeyValuePair<string, string>("username", username));
             postData.Add(new KeyValuePair<string, string>("password", password));
 
-            var content = new System.Net.Http.FormUrlEncodedContent(postData);
+           
+            var httpContent = new StringContent("{\"username\":\"a\",\"password\":\"b\"}", System.Text.Encoding.UTF8, "application/json");
 
             var client = new System.Net.Http.HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            var address = $"http://192.168.1.105:8080/SmartMarkt/login"; 
-
-            var response = await client.PostAsync(address, content);
+          
+            // var response = await client.PostAsync("http://192.168.1.105:8080/SmartMarkt/login", httpContent);
+            var response = await client.GetAsync("http://192.168.1.105:8080/SmartMarkt/");
 
             var validationCode = response.Content.ReadAsStringAsync().Result;
 
