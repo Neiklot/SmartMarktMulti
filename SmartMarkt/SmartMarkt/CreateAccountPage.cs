@@ -21,7 +21,7 @@ namespace SmartMarkt
                 Padding = new Thickness(10, 40, 10, 10),
                 Children = {
                     new Label { Text = "Create Account", Font = Font.SystemFontOfSize(NamedSize.Large) },
-                    new Label { Text = "Choose a Username" },
+                    new Label { Text = "Choose a Productname" },
                     new Entry { Text = "" },
                     new Label { Text = "Password" },
                     new Entry { Text = "" },

@@ -3,15 +3,14 @@ using Xamarin.Forms;
 
 namespace SmartMarkt
 {
-    public class UserEntryPage : ContentPage
+    public class ProductEntryPage : ContentPage
     {
-        private UsersPage _parent;
         private SmartMarktDatabase _database;
 
-        public UserEntryPage(ILoginManager ilm, SmartMarktDatabase database)
+        public ProductEntryPage(ILoginManager ilm, SmartMarktDatabase database)
         {
             _database = database;
-            Title = "Enter a User";
+            Title = "Enter a Product";
 
             var entry = new Entry();
             var button = new Button
@@ -21,11 +20,10 @@ namespace SmartMarkt
 
             button.Clicked += (sender, e) =>
             {
-                var user = entry.Text;
+                var Product = entry.Text;
                 var address = entry.Text;
 
-                _database.AddUser(user, address);
-                ilm.ShowUsersPage(ilm, database);
+                _database.AddProduct(Product, address);
             };
 
             Content = new StackLayout

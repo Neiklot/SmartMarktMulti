@@ -5,7 +5,7 @@ using SQLite;
 
 namespace SmartMarkt
 {
-    public class User
+    public class Product
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

@@ -10,6 +10,6 @@ namespace SmartMarkt
 
         public string IconSource { get; set; }
 
-        public string TargetType { get; set; }
+        public Type TargetType { get; set; }
     }
 }

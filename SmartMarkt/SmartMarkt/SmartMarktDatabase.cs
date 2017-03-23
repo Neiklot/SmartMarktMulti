@@ -14,34 +14,35 @@ namespace SmartMarkt
         public SmartMarktDatabase()
         {
             _connection = DependencyService.Get<ISQLite>().GetConnection();
-            _connection.CreateTable<User>();
+            _connection.CreateTable<Product>();
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<Product> GetProducts()
         {
-            return (from t in _connection.Table<User>()
+            return (from t in _connection.Table<Product>()
                     select t).ToList();
         }
 
-        public User GetUser(int id)
+        public IEnumerable<Product> GetProduct(string name)
         {
-            return _connection.Table<User>().FirstOrDefault(u => u.Id == id);
+            //return _connection.Table<Product>().FirstOrDefault(u => u.Name == name);
+            return _connection.Table<Product>().Where(p => p.Name == name);
         }
 
         public void DeleteUset(int id)
         {
-            _connection.Delete<User>(id);
+            _connection.Delete<Product>(id);
         }
 
-        public void AddUser(string name,string address)
+        public void AddProduct(string name,string address)
         {
-            var newUser = new User
+            var newProduct = new Product
             {
                 Name = name,
                 Address = address
             };
 
-            _connection.Insert(newUser);
+            _connection.Insert(newProduct);
         }
 
     }

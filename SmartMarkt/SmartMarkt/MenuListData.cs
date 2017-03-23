@@ -10,30 +10,30 @@ namespace SmartMarkt
         {
             this.Add(new MenuItem()
             {
-                Title = "Contracts",
-                IconSource = "contacts.png",
-                TargetType = "A"
+                Title = "Principal",
+                IconSource = "leads.png",
+                TargetType = typeof(MainPage)
             });
 
             this.Add(new MenuItem()
             {
-                Title = "Leads",
-                IconSource = "leads.png",
-                TargetType = "B"
+                Title = "Productos",
+                IconSource = "usuarios.png",
+                TargetType = typeof(ProductsPage)
             });
 
             this.Add(new MenuItem()
             {
                 Title = "Accounts",
                 IconSource = "accounts.png",
-                TargetType = "C"
+                TargetType = null
             });
 
             this.Add(new MenuItem()
             {
                 Title = "Opportunities",
                 IconSource = "opportunities.png",
-                TargetType = "D"
+                TargetType = null
             });
         }
     }

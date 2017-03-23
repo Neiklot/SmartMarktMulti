@@ -22,24 +22,14 @@ namespace SmartMarkt
 
             // we remember if they're logged in, and only display the login page if they're not
             if (isLoggedIn)
-                MainPage = new SmartMarkt.RootPage(this);
+                MainPage = new SmartMarkt.RootPage(this,database);
             else
                 MainPage = new LoginModalPage(this, database);
         }
 
         public void ShowMainPage()
         {
-            MainPage =  new RootPage(this);
-        }
-
-        public void ShowUsersPage(ILoginManager ilm, SmartMarktDatabase database)
-        {
-            MainPage = new UsersPage(ilm, database);
-        }
-
-        public void ShowUserEntryPage(ILoginManager ilm, SmartMarktDatabase database)
-        {
-            MainPage = new UserEntryPage(ilm, database);
+            MainPage =  new RootPage(this, database);
         }
 
         public void Logout()

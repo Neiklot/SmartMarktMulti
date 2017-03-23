@@ -10,11 +10,10 @@ namespace SmartMarkt
     public partial class MainPage : ContentPage
     {
         Entry productName, productDescription;
-        static MasterDetailPage MDPage;
-
-        public MainPage(ILoginManager ilm)
+        public MainPage()
         {
             InitializeComponent();
+           
             var logout = new Button
             {
                 Text = "Logout!",
@@ -33,7 +32,7 @@ namespace SmartMarkt
             };
             logout.Clicked += (sender, e) =>
             {
-                ilm.Logout();
+                App.Current.Logout();
             };
 
             var listView = new ListView();
@@ -66,7 +65,8 @@ namespace SmartMarkt
                 }
             };
         }
-        //void OnClick(object sender, EventArgs e)
+
+         //void OnClick(object sender, EventArgs e)
         //{
         //    ToolbarItem tbi = (ToolbarItem)sender;
         //    this.DisplayAlert("Selected!", tbi.Name, "OK");
