@@ -7,7 +7,9 @@
     "SQLite.Net-PCL": "3.1.1",
     "System.Data.SQLite": "1.0.104",
     "System.Net.Http": "4.3.1",
-    "Xamarin.Forms": "2.3.3.193"
+    "Xamarin.Forms": "2.3.3.193",
+    "ZXing.Net.Mobile": "2.1.47",
+    "ZXing.Net.Mobile.Forms": "2.1.47"
   },
   "frameworks": {
     "uap10.0": {}

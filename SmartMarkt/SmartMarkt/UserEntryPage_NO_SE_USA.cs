@@ -23,7 +23,7 @@ namespace SmartMarkt
                 var Product = entry.Text;
                 var address = entry.Text;
 
-                _database.AddProduct(Product, address);
+                _database.AddProduct(Product, address,0);
             };
 
             Content = new StackLayout

@@ -19,6 +19,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)FontAwesomeLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IQrCodeScanningService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuListData.cs" />

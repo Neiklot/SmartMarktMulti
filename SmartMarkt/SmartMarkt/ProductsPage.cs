@@ -14,7 +14,6 @@ namespace SmartMarkt
 
         public ProductsPage()
         {
-
             SmartMarktDatabase database = new SmartMarktDatabase();
             _database = database;
             Title = "Productos";
@@ -25,6 +24,7 @@ namespace SmartMarkt
             _ProductList.ItemTemplate = new DataTemplate(typeof(TextCell));
             _ProductList.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             _ProductList.ItemTemplate.SetBinding(TextCell.DetailProperty, "Address");
+            _ProductList.ItemTemplate.SetBinding(TextCell.DetailProperty, "BarCode");
 
             var aceptar = new Button
             {
@@ -37,30 +37,45 @@ namespace SmartMarkt
             };
 
             var addEntry = new Entry();
+            var addBarcode = new Entry();
             var buscarEntry = new Entry();
 
             aceptar.Clicked += (sender, e) =>
             {
                 var Product = addEntry.Text;
                 var address = addEntry.Text;
+                var newBarCode = 0;
+                var barCodeAdd = Int32.TryParse(addBarcode.Text, out newBarCode); ;
 
-                _database.AddProduct(Product, address);
+                _database.AddProduct(Product, address, newBarCode);
                 addEntry.Text= "";
                 Refresh();
                 returnToList();
             };
 
-            buscarEntry.TextChanged += (object sender, TextChangedEventArgs e) =>
+            buscar.Clicked += async (sender, e) =>
+           {
+               var scanner = DependencyService.Get<IQrCodeScanningService>();
+               var result = await scanner.ScanAsync();
+               if (result != null)
+               {
+                   buscarEntry.Text = result;
+               }
+           };
+
+                buscarEntry.TextChanged += (object sender, TextChangedEventArgs e) =>
             {
                 var newText = e.NewTextValue;
-                _ProductList.ItemsSource = _database.GetProduct(newText);
+                int barCode=0;
+                Int32.TryParse(newText, out barCode);
+                _ProductList.ItemsSource = _database.GetProduct(newText, barCode);
             };
                 var ProductsListContentPage = new ContentPage
             {
                 Padding = new Thickness(20),
                 Content = new StackLayout
                 {
-                    Children = { buscarEntry, _ProductList },
+                    Children = { buscarEntry,buscar, _ProductList },
                 }
             };
 
@@ -70,7 +85,7 @@ namespace SmartMarkt
                 Padding = new Thickness(20),
                 Content = new StackLayout
                 {
-                    Children = { addEntry, aceptar }
+                    Children = { addEntry, addBarcode, aceptar }
                 }
             };
 
