@@ -13,6 +13,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CreateAccountPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ActionButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FichaProducto.xaml.cs">
+      <DependentUpon>FichaProducto.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)FontAwesomeLabel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuListData.cs" />
@@ -36,6 +42,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)FichaProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

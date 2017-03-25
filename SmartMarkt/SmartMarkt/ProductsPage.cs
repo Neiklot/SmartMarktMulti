@@ -26,12 +26,6 @@ namespace SmartMarkt
             _ProductList.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
             _ProductList.ItemTemplate.SetBinding(TextCell.DetailProperty, "Address");
 
-            _busquedaList = new ListView();
-            _ProductList.ItemsSource = Products;
-            _busquedaList.ItemTemplate = new DataTemplate(typeof(TextCell));
-            _busquedaList.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
-            _busquedaList.ItemTemplate.SetBinding(TextCell.DetailProperty, "Address");
-
             var aceptar = new Button
             {
                 Text = "Aceptar"
@@ -55,18 +49,18 @@ namespace SmartMarkt
                 Refresh();
                 returnToList();
             };
-            buscar.Clicked += (sender, e) =>
-            {
-                var Product = buscarEntry.Text;
-                _busquedaList.ItemsSource = _database.GetProduct(Product);
-             };
 
-            var ProductsListContentPage = new ContentPage
+            buscarEntry.TextChanged += (object sender, TextChangedEventArgs e) =>
+            {
+                var newText = e.NewTextValue;
+                _ProductList.ItemsSource = _database.GetProduct(newText);
+            };
+                var ProductsListContentPage = new ContentPage
             {
                 Padding = new Thickness(20),
                 Content = new StackLayout
                 {
-                    Children = { _ProductList },
+                    Children = { buscarEntry, _ProductList },
                 }
             };
 
@@ -80,21 +74,16 @@ namespace SmartMarkt
                 }
             };
 
-            var buscarContentPage = new ContentPage
-            {
-                Padding = new Thickness(20),
-                Content = new StackLayout
-                {
-                    Children = { buscarEntry, buscar, _busquedaList }
-                }
-            };
-      
             Children.Add(ProductsListContentPage);
-            Children.Add(buscarContentPage);
             Children.Add(ProductEntryContentPage);
          
             SelectedItem = Children.ElementAt<ContentPage>(0);
 
+
+            _ProductList.ItemTapped += (sender, e) => {
+                Type TargetType = typeof(FichaProducto);
+                NavigationTo(new FichaProducto((Product)e.Item));
+            };
 
 
         }
@@ -104,7 +93,20 @@ namespace SmartMarkt
             _ProductList.ItemsSource = _database.GetProducts();
         }
         public void returnToList() {
-            SelectedItem = Children.ElementAt<ContentPage>(0);
+              SelectedItem = Children.ElementAt<ContentPage>(0);
         }
+
+        public async void  NavigationTo(ContentPage page)
+        {
+            try
+            {
+                await ((RootPage)App.Current.MainPage).Detail.Navigation.PushAsync(page);
+            }
+            catch (Exception e) {
+                Console.Write(e.ToString());
+            }
+           
+        }
+
     }
 }

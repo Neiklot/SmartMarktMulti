@@ -26,7 +26,9 @@ namespace SmartMarkt
         public IEnumerable<Product> GetProduct(string name)
         {
             //return _connection.Table<Product>().FirstOrDefault(u => u.Name == name);
-            return _connection.Table<Product>().Where(p => p.Name == name);
+            //return _connection.Table<Product>().Where(p => p.Name == name);
+            return _connection.Query<Product>(
+                "SELECT * FROM Product WHERE name like '%"+ name + "%'").AsEnumerable();
         }
 
         public void DeleteUset(int id)

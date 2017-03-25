@@ -26,7 +26,7 @@ namespace SmartMarkt
             {
                 Title = "Accounts",
                 IconSource = "accounts.png",
-                TargetType = null
+                TargetType = typeof(FichaProducto)
             });
 
             this.Add(new MenuItem()

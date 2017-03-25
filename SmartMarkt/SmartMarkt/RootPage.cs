@@ -10,16 +10,16 @@ namespace SmartMarkt
         {
             var menuPage = new MenuPage();
 
-            menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as MenuItem,ilm,database);
+            menuPage.Menu.ItemTapped += (sender, e) => NavigateTo(e.Item as MenuItem,ilm,database);
 
             Master = menuPage;
             Detail = new NavigationPage(new MainPage());
         }
 
-        void NavigateTo(MenuItem menu, ILoginManager ilm,SmartMarktDatabase database)
+        async void NavigateTo(MenuItem menu, ILoginManager ilm,SmartMarktDatabase database)
         {
             Page displayPage = (Page)Activator.CreateInstance(menu.TargetType);
-            Detail = new NavigationPage(displayPage);
+            await Detail.Navigation.PushAsync(displayPage);
             IsPresented = false;
         
         }

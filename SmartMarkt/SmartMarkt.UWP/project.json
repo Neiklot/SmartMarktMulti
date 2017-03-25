@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "FontAwesome": "4.7.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "sqlite": "3.13.0",
     "sqlite-net": "1.0.8",

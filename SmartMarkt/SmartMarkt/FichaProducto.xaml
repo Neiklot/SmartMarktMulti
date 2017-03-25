@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMarkt.FichaProducto">
+    <!--<Style x:Key="defaultPageStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="#f8f8f8"/>
+    </Style>-->
+</ContentPage>
