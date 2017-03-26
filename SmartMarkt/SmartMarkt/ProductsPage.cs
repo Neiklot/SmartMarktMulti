@@ -44,8 +44,8 @@ namespace SmartMarkt
             {
                 var Product = addEntry.Text;
                 var address = addEntry.Text;
-                var newBarCode = 0;
-                var barCodeAdd = Int32.TryParse(addBarcode.Text, out newBarCode); ;
+                long newBarCode = 0;
+                var barCodeAdd = long.TryParse(addBarcode.Text, out newBarCode); ;
 
                 _database.AddProduct(Product, address, newBarCode);
                 addEntry.Text= "";
@@ -66,8 +66,8 @@ namespace SmartMarkt
                 buscarEntry.TextChanged += (object sender, TextChangedEventArgs e) =>
             {
                 var newText = e.NewTextValue;
-                int barCode=0;
-                Int32.TryParse(newText, out barCode);
+                long barCode=0;
+                long.TryParse(newText, out barCode);
                 _ProductList.ItemsSource = _database.GetProduct(newText, barCode);
             };
                 var ProductsListContentPage = new ContentPage

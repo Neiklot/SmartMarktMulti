@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace SmartMarkt
 {
-   public class SmartMarktDatabase
+    public class SmartMarktDatabase
     {
         private SQLiteConnection _connection;
 
@@ -25,12 +25,18 @@ namespace SmartMarkt
                     select t).ToList();
         }
 
-        public IEnumerable<Product> GetProduct(string name,int barCode)
+        public IEnumerable<Product> GetProduct(string name, long barCode)
         {
             //return _connection.Table<Product>().FirstOrDefault(u => u.Name == name);
             //return _connection.Table<Product>().Where(p => p.Name == name);
-            return _connection.Query<Product>(
-                "SELECT * FROM Product WHERE name like '%"+ name + "%' or BarCode="+ barCode).AsEnumerable();
+            var sql = "SELECT * FROM Product WHERE name like '%" + name + "%' ";
+            if (barCode != 0)
+            {
+                sql += " or BarCode = " + barCode;
+            }
+
+
+            return _connection.Query<Product>(sql).AsEnumerable();
         }
 
         public void DeleteUset(int id)
@@ -38,13 +44,13 @@ namespace SmartMarkt
             _connection.Delete<Product>(id);
         }
 
-        public void AddProduct(string name,string address,int barCode)
+        public void AddProduct(string name, string address, long barCode)
         {
             var newProduct = new Product
             {
                 Name = name,
                 Address = address,
-                BarCode=barCode
+                BarCode = barCode
             };
 
             _connection.Insert(newProduct);
