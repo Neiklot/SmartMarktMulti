@@ -9,14 +9,14 @@ using Xamarin.Forms;
 namespace SmartMarkt
 {
 
-    public class LoginPage : ContentPage
+    public class LoginPage_OLD : ContentPage
     {
         Entry Productname, password;
       
 
-        public LoginPage(ILoginManager ilm,SmartMarktDatabase database)
+        public LoginPage_OLD(ILoginManager ilm,SmartMarktDatabase database)
         {
-       
+
             var button = new Button { Text = "Login" };
             button.Clicked += async (sender, e) =>
             {
