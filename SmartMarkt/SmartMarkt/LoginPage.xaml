@@ -2,19 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMarkt.LoginPage">
-    <RelativeLayout >
-    <Image Source="Jupiter.png" Opacity="0.3"
-                RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+    <RelativeLayout   BackgroundColor="Black" VerticalOptions="Fill">
+        <Image  Source="login2.png" Opacity="0.3" VerticalOptions="EndAndExpand"
+         HorizontalOptions="Center"  />
+
         <StackLayout x:Name="loginLayout" RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Label x:Name="logo" Font="Bold,60" TextColor="White" TranslationY="75" Margin="0"
+                   HorizontalOptions="Center" VerticalOptions="Center" Text="Smart Markt" />
 
-        <Label Text="Hello world from XAML" VerticalOptions="Center"
-         HorizontalOptions="Center" FontSize="30"/>
-    </StackLayout>
+            <Entry x:Name="username" BackgroundColor="White" Opacity="0.7" TextColor="Fuchsia"
+                   TranslationY="125" Margin="20" Placeholder="Login"/>
+            <Entry x:Name="password" BackgroundColor="White" Opacity="0.7" TextColor="Fuchsia"
+                   TranslationY="125" Margin="20" Placeholder="Password"/>
+            <Button x:Name="button" BackgroundColor="Gray" TextColor="Purple"
+                   TranslationY="150" Margin="20" Text="Login"/>
+        </StackLayout>
     </RelativeLayout> 
 </ContentPage>

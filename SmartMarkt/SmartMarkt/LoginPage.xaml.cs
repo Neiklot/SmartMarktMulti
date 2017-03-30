@@ -13,8 +13,7 @@ namespace SmartMarkt
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-        Entry Productname, password;
-
+     
         public LoginPage(ILoginManager ilm, SmartMarktDatabase database)
         {
             InitializeComponent();
@@ -22,7 +21,7 @@ namespace SmartMarkt
             var button = new Button { Text = "Login" };
             button.Clicked += async (sender, e) =>
             {
-                if (String.IsNullOrEmpty(Productname.Text) || String.IsNullOrEmpty(password.Text))
+                if (String.IsNullOrEmpty(username.Text) || String.IsNullOrEmpty(password.Text))
                 {
                     DisplayAlert("Validation Error", "Productname and Password are required", "Re-try");
                 }
@@ -41,14 +40,12 @@ namespace SmartMarkt
                 }
             };
 
-            Productname = new Entry { Text = "" };
-            password = new Entry { Text = "" };
-            loginLayout.Children.Add(new Label { Text = "Login", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)) });
-            loginLayout.Children.Add(new Label { Text = "Productname" });
-            loginLayout.Children.Add(Productname);
-            loginLayout.Children.Add(new Label { Text = "Password" });
-            loginLayout.Children.Add(password);
-            loginLayout.Children.Add(button);
+            username = this.FindByName<Entry>("username");
+            password = this.FindByName<Entry>("password");
+            var TextBackgroundColor = new Color(0, 0, 0, 0.5);
+            username.BackgroundColor = TextBackgroundColor;
+
+        
         }
         public async Task<string> GetLoginValidation(string Productname, string password)
         {
