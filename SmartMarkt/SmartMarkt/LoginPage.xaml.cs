@@ -17,8 +17,8 @@ namespace SmartMarkt
         public LoginPage(ILoginManager ilm, SmartMarktDatabase database)
         {
             InitializeComponent();
-
-            var button = new Button { Text = "Login" };
+           
+        var button = this.FindByName<Button>("button");
             button.Clicked += async (sender, e) =>
             {
                 if (String.IsNullOrEmpty(username.Text) || String.IsNullOrEmpty(password.Text))
@@ -42,10 +42,7 @@ namespace SmartMarkt
 
             username = this.FindByName<Entry>("username");
             password = this.FindByName<Entry>("password");
-            var TextBackgroundColor = new Color(0, 0, 0, 0.5);
-            username.BackgroundColor = TextBackgroundColor;
-
-        
+                  
         }
         public async Task<string> GetLoginValidation(string Productname, string password)
         {

@@ -170,7 +170,10 @@
     <AndroidResource Include="Resources\values\theme.xml" />
     <AndroidResource Include="Resources\Drawable\login.png" />
     <AndroidResource Include="Resources\Drawable\logo.png" />
-    <AndroidResource Include="Resources\Drawable\login2.png" />
+    <AndroidResource Include="Resources\Drawable\login2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Drawable\fondo.png" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

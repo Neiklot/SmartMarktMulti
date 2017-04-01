@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMarkt.LoginPage">
     <RelativeLayout   BackgroundColor="Black" VerticalOptions="Fill">
-        <Image  Source="login2.png" Opacity="0.3" VerticalOptions="EndAndExpand"
-         HorizontalOptions="Center"  />
+        <Image  Source="login2.png" Opacity="0.3" Scale="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  />
 
         <StackLayout x:Name="loginLayout" RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"

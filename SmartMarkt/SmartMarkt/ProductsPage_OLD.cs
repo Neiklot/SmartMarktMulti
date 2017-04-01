@@ -6,13 +6,13 @@ using Xamarin.Forms;
 
 namespace SmartMarkt
 {
-    public class ProductsPage : CarouselPage
+    public class ProductsPage_OLD : CarouselPage
     {
         private SmartMarktDatabase _database;
         private ListView _ProductList;
         private ListView _busquedaList;
 
-        public ProductsPage()
+        public ProductsPage_OLD()
         {
             SmartMarktDatabase database = new SmartMarktDatabase();
             _database = database;
@@ -21,11 +21,6 @@ namespace SmartMarkt
 
             _ProductList = new ListView();
             _ProductList.ItemsSource = Products;
-            _ProductList.ItemTemplate = new DataTemplate(typeof(TextCell));
-            _ProductList.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
-            _ProductList.ItemTemplate.SetBinding(TextCell.DetailProperty, "Address");
-            _ProductList.ItemTemplate.SetBinding(TextCell.DetailProperty, "BarCode");
-
             var aceptar = new Button
             {
                 Text = "Aceptar"
@@ -118,7 +113,7 @@ namespace SmartMarkt
                 await ((RootPage)App.Current.MainPage).Detail.Navigation.PushAsync(page);
             }
             catch (Exception e) {
-                Console.Write(e.ToString());
+                //Console.Write(e.ToString());
             }
            
         }

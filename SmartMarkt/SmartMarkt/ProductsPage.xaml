@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMarkt.ProductsPage">
+
+    <ContentPage >
+
+        <!--                     xmlns:common="clr-namespace:UXDivers.Gorilla;assembly=UXDivers.Gorilla.Common"                                            
+                       -->
+        <!--<ContentPage.Resources>
+            <ResourceDictionary>
+                   <common:JsonData x:Key="People">
+                    [
+                    { "Name": "John", "BarCode":29, "Photo":"friend_thumbnail_27.jpg" },
+                    { "Name": "Pam", "BarCode":32, "Photo":"friend_thumbnail_31.jpg" },
+                    { "Name": "Casy", "BarCode":58, "Photo":"friend_thumbnail_93.jpg" },
+                    { "Name": "Susan", "BarCode":29, "Photo":"friend_thumbnail_75.jpg" }
+                ]
+                </common:JsonData>
+            </ResourceDictionary>
+      </ContentPage.Resources>-->
+        <ContentPage.Content>
+
+            <StackLayout>
+          
+                <Grid AbsoluteLayout.LayoutBounds="0,0,0,0" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Image Source="login.png" HorizontalOptions="FillAndExpand" Scale="3" Opacity="0.5"></Image>
+                    <Entry x:Name="buscarEntry" BackgroundColor="Black" Opacity="0.5" TranslationY="80" TextColor="Black" VerticalOptions="StartAndExpand"  />
+                    <Button x:Name="buscar" TextColor="White" TranslationY="110" VerticalOptions="StartAndExpand"  Margin="20" Text="Buscar" BackgroundColor="Gray"/>
+                </Grid>
+                
+                <!--<StackLayout>-->
+                <!--<Image  Source="login2.png" Opacity="0.3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  />-->
+              
+            <!--</StackLayout>-->
+
+
+                <!--<ListView TranslationY="120" x:Name="productsList" ItemsSource="{Binding Source={StaticResource People}, Path=Obj}"  SeparatorVisibility="None"
+                      BackgroundColor="Transparent"  RowHeight="130" >-->
+            <ListView TranslationY="90" x:Name="productsList" ItemsSource="{Binding Products}" SeparatorVisibility="Default"
+                      BackgroundColor="Transparent"  RowHeight="120" >
+                    
+
+                    <ListView.ItemTemplate >
+                    
+                    <DataTemplate>
+
+                            <ViewCell >
+                                <Grid BackgroundColor="White" Opacity="1"  Padding="0,0,0,0"  Margin="10,10,10,10" VerticalOptions="Fill"
+                                  >
+                                 
+                                    <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="1"  Source="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/310px-Coca-Cola_logo.svg.png" 
+                                        VerticalOptions="StartAndExpand"  Scale="1" Aspect="Fill"  BackgroundColor="Transparent" Margin="10" />
+                                <Grid Grid.Column="2" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Name}" Grid.Row="1" VerticalOptions="Fill"  BackgroundColor="Transparent" FontSize="20" TextColor="#FFA500"/>
+                                    <Label Text="{Binding BarCode}" Grid.Row="2" VerticalOptions="Fill"  BackgroundColor="Transparent"  TextColor="Gray"/>
+                            <!--<Label Text="" Grid.Row="3" VerticalOptions="Fill"  BackgroundColor="#7c4ecd"  />-->
+
+                                </Grid>
+                                    
+                                </Grid>
+                        </ViewCell>
+                        
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+              
+            </StackLayout>
+            
+        </ContentPage.Content>
+
+    </ContentPage>
+</CarouselPage>

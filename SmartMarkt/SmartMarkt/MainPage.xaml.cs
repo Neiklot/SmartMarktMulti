@@ -13,23 +13,16 @@ namespace SmartMarkt
         public MainPage()
         {
             InitializeComponent();
-
-            var logout = new Button
-            {
-                Text = "Logout!",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
-                BorderWidth = 1,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-            var newProduct = new Button
-            {
-                Text = "Agregar Producto",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
-                BorderWidth = 1,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
+            var logout = this.FindByName<Button>("logout");
+          
+            //var newProduct = new Button
+            //{
+            //    Text = "Agregar Producto",
+            //    Font = Font.SystemFontOfSize(NamedSize.Large),
+            //    BorderWidth = 1,
+            //    HorizontalOptions = LayoutOptions.Center,
+            //    VerticalOptions = LayoutOptions.CenterAndExpand
+            //};
             logout.Clicked += (sender, e) =>
             {
                 App.Current.Logout();
@@ -60,7 +53,6 @@ namespace SmartMarkt
                         productName,
                         new Label { Text = "Descripción del producto", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)) },
                         productDescription,
-                        newProduct,
                         listView
                     }
             };
