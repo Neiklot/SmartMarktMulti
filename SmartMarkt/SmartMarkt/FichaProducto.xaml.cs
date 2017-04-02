@@ -2,22 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SmartMarkt
 {
-	public partial class FichaProducto : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FichaProducto : ContentPage
 	{
-		public FichaProducto (Product product)
+        public FichaProducto (Product product)
 		{
 			InitializeComponent ();
+            var layoutPrincipal = this.FindByName<StackLayout>("layoutPrincipal");
+            var editButton = new ActionButton();
+            editButton.ButtonColor = Color.FromHex("#E91E63");
+            editButton.ButtonIcon = "Editar";
 
+            Entry barCodeEntry = this.FindByName<Entry>("BarCodeEntry");
+            barCodeEntry.IsEnabled = false;
+
+            Entry nameEntry = this.FindByName<Entry>("NameEntry");
+            nameEntry.IsEnabled = false;
 
             Label name = new Label();
-            name.Text = product.Name;
+
+
+            name.Text = product.name;
             var cerrar = new Button { Text = "Cerrar" };
             cerrar.Clicked += async (sender, e) =>
             {
@@ -30,12 +40,22 @@ namespace SmartMarkt
                 }
             };
 
-                Content =new StackLayout
+
+            editButton.OnTouchesBegan += (sender, e) =>
             {
-                Children = {
-                    name,cerrar
+                 barCodeEntry.IsEnabled = !barCodeEntry.IsEnabled;
+                nameEntry.IsEnabled = !nameEntry.IsEnabled;
+                if (barCodeEntry.IsEnabled)
+                {
+                    editButton.ButtonIcon = "Guardar";
+                }
+                else {
+                    editButton.ButtonIcon = "Editar";
                 }
             };
-		}
-	}
+
+             layoutPrincipal.Children.Add(editButton);
+        }
+
+    }
 }

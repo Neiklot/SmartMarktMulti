@@ -11,7 +11,6 @@ namespace SmartMarkt
     public partial class ProductsPage : CarouselPage
     {
         private SmartMarktDatabase _database;
-        private ListView _busquedaList;
 
         public ProductsPage()
         {
@@ -22,12 +21,9 @@ namespace SmartMarkt
             Title = "Productos";
             var Products = _database.GetProducts();
             productsList = this.FindByName<ListView>("productsList");
-            //_ProductList = new ListView();
+  
             productsList.ItemsSource = Products;
-            //productsList.ItemTemplate = new DataTemplate(typeof(TextCell));
-            //productsList.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
-            //productsList.ItemTemplate.SetBinding(TextCell.DetailProperty, "Address");
-            //productsList.ItemTemplate.SetBinding(TextCell.DetailProperty, "BarCode");
+            
 
 
             var aceptar = new Button
@@ -55,9 +51,13 @@ namespace SmartMarkt
 
             buscar.Clicked += async (sender, e) =>
             {
-                Console.Write("Boton");
-                var scanner = DependencyService.Get<IQrCodeScanningService>();
-                var result = await scanner.ScanAsync();
+                String result = null;
+                try {
+                    var scanner = DependencyService.Get<IQrCodeScanningService>();
+                    result = await scanner.ScanAsync();
+                } catch (Exception ex) {
+                    Console.Write(ex.ToString());
+                }
                 if (result != null)
                 {
                     buscarEntry.Text = result;

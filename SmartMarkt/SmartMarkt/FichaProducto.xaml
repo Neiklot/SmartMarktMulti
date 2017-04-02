@@ -1,8 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartMarkt.FichaProducto">
-    <!--<Style x:Key="defaultPageStyle" TargetType="ContentPage">
-        <Setter Property="BackgroundColor" Value="#f8f8f8"/>
-    </Style>-->
+             x:Class="SmartMarkt.FichaProducto" BackgroundColor="White">
+    <ContentPage.Content>
+
+        <RelativeLayout>
+            <Grid  ColumnSpacing="10"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="Start" Margin="10,30,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Nombre"  TextColor="Black" FontSize="20" Margin="0,5,0,0"
+               HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"
+                >
+        </Label>
+                <Entry x:Name="NameEntry" BackgroundColor="Transparent"  Opacity="0.5" Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" Placeholder="Inserta el nombre..."  Text="{Binding Path=product.Name}">
+
+
+        </Entry>
+
+        <Label  Text="BarCode"  TextColor="Black" FontSize="20" Margin="0,5,0,0" HorizontalOptions="Start" Grid.Row="1" Grid.Column="0">
+        </Label>
+                <Entry x:Name="BarCodeEntry" BackgroundColor="Transparent" Opacity="0.5"  Grid.Row="1" Grid.Column="1" Margin="0,0,20,0" Placeholder="Enter Bar Code..." Text="{Binding Path=product.barCode}">
+
+
+        </Entry>
+    </Grid>
+            <StackLayout HeightRequest="100" WidthRequest="100" x:Name="layoutPrincipal" TranslationY="430" TranslationX="220"  HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                <!--<Label Text="A"></Label>-->
+        </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
 </ContentPage>

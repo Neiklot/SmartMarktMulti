@@ -48,9 +48,8 @@ namespace SmartMarkt
         {
             var newProduct = new Product
             {
-                Name = name,
-                Address = address,
-                BarCode = barCode
+                name = name,
+                barCode = barCode
             };
 
             _connection.Insert(newProduct);

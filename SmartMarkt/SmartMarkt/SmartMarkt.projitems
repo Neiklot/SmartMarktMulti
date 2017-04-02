@@ -43,7 +43,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)UserEntryPage_NO_SE_USA.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ProductsPage_OLD.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -62,8 +61,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)login.jpg" />
-    <Content Include="$(MSBuildThisFileDirectory)logo.png" />
     <None Include="$(MSBuildThisFileDirectory)SampleData.json" />
   </ItemGroup>
   <ItemGroup>

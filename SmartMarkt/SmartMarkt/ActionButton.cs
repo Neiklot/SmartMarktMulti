@@ -188,7 +188,7 @@ namespace SmartMarkt
         /// The button color property.
         /// </summary>
         public static BindableProperty ButtonColorProperty =
-            BindableProperty.Create<ActionButton, Color>(p => p.ButtonColor, Color.Gray,
+            BindableProperty.Create<ActionButton, Color>(p => p.ButtonColor, Color.Purple,
                 BindingMode.TwoWay, null, (bindable, oldValue, newValue) => {
                     var ctrl = (ActionButton)bindable;
                     ctrl.ButtonColor = newValue;

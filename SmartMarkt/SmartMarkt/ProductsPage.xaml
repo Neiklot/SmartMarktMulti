@@ -64,8 +64,8 @@
                                         <RowDefinition Height="40" />
                                         <RowDefinition Height="40" />
                                     </Grid.RowDefinitions>
-                                    <Label Text="{Binding Name}" Grid.Row="1" VerticalOptions="Fill"  BackgroundColor="Transparent" FontSize="20" TextColor="Black"/>
-                                    <Label Text="{Binding BarCode}" Grid.Row="2" VerticalOptions="Fill"  BackgroundColor="Transparent"  TextColor="Gray"/>
+                                    <Label Text="{Binding name}" Grid.Row="1" VerticalOptions="Fill"  BackgroundColor="Transparent" FontSize="20" TextColor="Black"/>
+                                    <Label Text="{Binding barCode}" Grid.Row="2" VerticalOptions="Fill"  BackgroundColor="Transparent"  TextColor="Gray"/>
                             <!--<Label Text="" Grid.Row="3" VerticalOptions="Fill"  BackgroundColor="#7c4ecd"  />-->
 
                                 </Grid>
