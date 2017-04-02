@@ -55,6 +55,7 @@ namespace SmartMarkt
 
             buscar.Clicked += async (sender, e) =>
             {
+                Console.Write("Boton");
                 var scanner = DependencyService.Get<IQrCodeScanningService>();
                 var result = await scanner.ScanAsync();
                 if (result != null)

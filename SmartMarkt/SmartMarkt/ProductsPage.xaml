@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:common="clr-namespace:UXDivers.Gorilla;assembly=UXDivers.Gorilla.Common" 
              x:Class="SmartMarkt.ProductsPage">
 
     <ContentPage >
 
-        <!--                     xmlns:common="clr-namespace:UXDivers.Gorilla;assembly=UXDivers.Gorilla.Common"                                            
+        <!--                                                               
                        -->
         <!--<ContentPage.Resources>
             <ResourceDictionary>
@@ -21,13 +22,15 @@
       </ContentPage.Resources>-->
         <ContentPage.Content>
 
-            <StackLayout>
-          
-                <Grid AbsoluteLayout.LayoutBounds="0,0,0,0" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Image Source="login.png" HorizontalOptions="FillAndExpand" Scale="3" Opacity="0.5"></Image>
-                    <Entry x:Name="buscarEntry" BackgroundColor="Black" Opacity="0.5" TranslationY="80" TextColor="Black" VerticalOptions="StartAndExpand"  />
-                    <Button x:Name="buscar" TextColor="White" TranslationY="110" VerticalOptions="StartAndExpand"  Margin="20" Text="Buscar" BackgroundColor="Gray"/>
-                </Grid>
+            <StackLayout BackgroundColor="#4d0099">
+
+                <RelativeLayout BackgroundColor="#4d0099"
+                      HorizontalOptions="Fill" VerticalOptions="FillAndExpand" >
+                    <Image Source="fondo2.png" HorizontalOptions="EndAndExpand" Scale="2" Opacity="1"/>
+                    <Entry x:Name="buscarEntry" BackgroundColor="Black" Opacity="0.5" TranslationY="40" TextColor="White" Margin="30,0,30,0" VerticalOptions="StartAndExpand" WidthRequest="300" />
+                    <Button x:Name="buscar" TextColor="White" TranslationY="50" VerticalOptions="StartAndExpand"  Margin="130,50,20,50" Text="Buscar" BackgroundColor="Gray" WidthRequest="100"/>
+
+                </RelativeLayout>
                 
                 <!--<StackLayout>-->
                 <!--<Image  Source="login2.png" Opacity="0.3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  />-->
@@ -37,8 +40,8 @@
 
                 <!--<ListView TranslationY="120" x:Name="productsList" ItemsSource="{Binding Source={StaticResource People}, Path=Obj}"  SeparatorVisibility="None"
                       BackgroundColor="Transparent"  RowHeight="130" >-->
-            <ListView TranslationY="90" x:Name="productsList" ItemsSource="{Binding Products}" SeparatorVisibility="Default"
-                      BackgroundColor="Transparent"  RowHeight="120" >
+            <ListView TranslationY="20" x:Name="productsList" ItemsSource="{Binding Products}" SeparatorVisibility="Default"
+                      BackgroundColor="White"  RowHeight="120" >
                     
 
                     <ListView.ItemTemplate >
@@ -61,7 +64,7 @@
                                         <RowDefinition Height="40" />
                                         <RowDefinition Height="40" />
                                     </Grid.RowDefinitions>
-                                    <Label Text="{Binding Name}" Grid.Row="1" VerticalOptions="Fill"  BackgroundColor="Transparent" FontSize="20" TextColor="#FFA500"/>
+                                    <Label Text="{Binding Name}" Grid.Row="1" VerticalOptions="Fill"  BackgroundColor="Transparent" FontSize="20" TextColor="Black"/>
                                     <Label Text="{Binding BarCode}" Grid.Row="2" VerticalOptions="Fill"  BackgroundColor="Transparent"  TextColor="Gray"/>
                             <!--<Label Text="" Grid.Row="3" VerticalOptions="Fill"  BackgroundColor="#7c4ecd"  />-->
 
