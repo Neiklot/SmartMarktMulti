@@ -13,6 +13,7 @@ namespace SmartMarkt
         public FichaProducto (Product product)
 		{
 			InitializeComponent ();
+            Title = "Editar productos";
             var layoutButton = this.FindByName<StackLayout>("layoutButton");
             var editButton = new ActionButton();
             editButton.ButtonColor = Color.FromHex("#E91E63");
