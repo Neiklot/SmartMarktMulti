@@ -13,7 +13,7 @@ namespace SmartMarkt
         public string description { get; set; }
         public long barCode { get; set; }
         public Double price { get; set; }
-        public int idCategorie { get; set; }
+        public int idCategory { get; set; }
         public int idFamily { get; set; }
 
         public Double valorEnergetico { get; set; }

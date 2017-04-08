@@ -13,7 +13,7 @@ namespace SmartMarkt
         public FichaProducto (Product product)
 		{
 			InitializeComponent ();
-            var layoutPrincipal = this.FindByName<StackLayout>("layoutPrincipal");
+            var layoutButton = this.FindByName<StackLayout>("layoutButton");
             var editButton = new ActionButton();
             editButton.ButtonColor = Color.FromHex("#E91E63");
             editButton.ButtonIcon = "Editar";
@@ -44,7 +44,7 @@ namespace SmartMarkt
             editButton.OnTouchesBegan += (sender, e) =>
             {
                  barCodeEntry.IsEnabled = !barCodeEntry.IsEnabled;
-                nameEntry.IsEnabled = !nameEntry.IsEnabled;
+                 nameEntry.IsEnabled = !nameEntry.IsEnabled;
                 if (barCodeEntry.IsEnabled)
                 {
                     editButton.ButtonIcon = "Guardar";
@@ -54,7 +54,7 @@ namespace SmartMarkt
                 }
             };
 
-             layoutPrincipal.Children.Add(editButton);
+            layoutButton.Children.Add(editButton);
         }
 
     }
