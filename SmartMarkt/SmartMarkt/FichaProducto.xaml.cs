@@ -10,9 +10,17 @@ namespace SmartMarkt
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FichaProducto : ContentPage
 	{
+        private SmartMarktDatabase database;
+
         public FichaProducto (Product product)
 		{
 			InitializeComponent ();
+
+            database = new SmartMarktDatabase();
+            if (product == null) {
+                product = new Product();
+            }
+
             Title = "Editar productos";
             var layoutButton = this.FindByName<StackLayout>("layoutButton");
             var editButton = new ActionButton();
@@ -44,13 +52,29 @@ namespace SmartMarkt
 
             editButton.OnTouchesBegan += (sender, e) =>
             {
-                 barCodeEntry.IsEnabled = !barCodeEntry.IsEnabled;
-                 nameEntry.IsEnabled = !nameEntry.IsEnabled;
-                if (barCodeEntry.IsEnabled)
+                BarCodeEntry.IsEnabled = !BarCodeEntry.IsEnabled;
+                NameEntry.IsEnabled = !NameEntry.IsEnabled;
+                PriceEntry.IsEnabled = !PriceEntry.IsEnabled;
+                CategoryEntry.IsEnabled = !CategoryEntry.IsEnabled;
+                FamilyEntry.IsEnabled = !FamilyEntry.IsEnabled;
+                ValorEnergeticoEntry.IsEnabled = !ValorEnergeticoEntry.IsEnabled;
+                GrasasSaturadasEntry.IsEnabled = !GrasasSaturadasEntry.IsEnabled;
+                GrasasMonoinsaturadasEntry.IsEnabled = !GrasasMonoinsaturadasEntry.IsEnabled;
+                GrasasPolisaturadasEntry.IsEnabled = !GrasasPolisaturadasEntry.IsEnabled;
+                HidratosDeCarbonoEntry.IsEnabled = !HidratosDeCarbonoEntry.IsEnabled;
+                HidratosDeCarbonoAzucaresEntry.IsEnabled = !HidratosDeCarbonoAzucaresEntry.IsEnabled;
+                FibraEntry.IsEnabled = !FibraEntry.IsEnabled;
+                ProteinasEntry.IsEnabled = !ProteinasEntry.IsEnabled;
+                SalEntry.IsEnabled = !SalEntry.IsEnabled;
+
+
+                if (NameEntry.IsEnabled)
                 {
                     editButton.ButtonIcon = "Guardar";
-                }
-                else {
+                } else {
+
+                    database.AddProduct(NameEntry.Text, Convert.ToDouble(PriceEntry.Text), Convert.ToInt64(BarCodeEntry.Text));
+
                     editButton.ButtonIcon = "Editar";
                 }
             };

@@ -21,12 +21,19 @@ namespace SmartMarkt
             Title = "Productos";
             var Products = _database.GetProducts();
             productsList = this.FindByName<ListView>("productsList");
-  
+
+            var layoutAddButton = this.FindByName<StackLayout>("addButton");
+            var addButton = new ActionButton();
+            addButton.ButtonIcon = "Nuevo";
+            layoutAddButton.Children.Add(addButton);
+
             productsList.ItemsSource = Products;
-            
 
+            this.CurrentPageChanged += (sender, e) => {
+                Refresh();
+            };
 
-            var aceptar = new Button
+             var aceptar = new Button
             {
                 Text = "Aceptar"
             };
@@ -36,14 +43,20 @@ namespace SmartMarkt
             var addEntry = new Entry();
             var addBarcode = new Entry();
 
-            aceptar.Clicked += (sender, e) =>
+            addButton.OnTouchesBegan += (sender, e) =>
+            {
+                Type TargetType = typeof(FichaProducto);
+                NavigationTo(new FichaProducto(null));
+            };
+
+                aceptar.Clicked += (sender, e) =>
             {
                 var Product = addEntry.Text;
                 var address = addEntry.Text;
                 long newBarCode = 0;
                 var barCodeAdd = long.TryParse(addBarcode.Text, out newBarCode); ;
 
-                _database.AddProduct(Product, address, newBarCode);
+        
                 addEntry.Text = "";
                 Refresh();
                 returnToList();

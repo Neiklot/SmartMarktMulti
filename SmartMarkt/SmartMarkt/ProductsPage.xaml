@@ -22,7 +22,7 @@
       </ContentPage.Resources>-->
         <ContentPage.Content>
 
-            <StackLayout BackgroundColor="#4d0099">
+            <StackLayout BackgroundColor="White">
 
                 <RelativeLayout BackgroundColor="#4d0099"
                       HorizontalOptions="Fill" VerticalOptions="FillAndExpand" >
@@ -40,7 +40,7 @@
 
                 <!--<ListView TranslationY="120" x:Name="productsList" ItemsSource="{Binding Source={StaticResource People}, Path=Obj}"  SeparatorVisibility="None"
                       BackgroundColor="Transparent"  RowHeight="130" >-->
-            <ListView TranslationY="20" x:Name="productsList" ItemsSource="{Binding Products}" SeparatorVisibility="Default"
+            <ListView TranslationY="20" x:Name="productsList" HeightRequest="400" ItemsSource="{Binding Products}" SeparatorVisibility="Default"
                       BackgroundColor="White"  RowHeight="120" >
                     
 
@@ -49,10 +49,9 @@
                     <DataTemplate>
 
                             <ViewCell >
-                                <Grid BackgroundColor="White" Opacity="1"  Padding="0,0,0,0"  Margin="10,10,10,10" VerticalOptions="Fill"
-                                  >
+                                <Grid BackgroundColor="White" Opacity="1"  Padding="0,0,0,0"  Margin="10,10,10,10" VerticalOptions="Fill" >
                                  
-                                    <Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="100" />
                                 </Grid.ColumnDefinitions>
@@ -76,7 +75,10 @@
                     </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-              
+
+                <StackLayout BackgroundColor="Transparent"   x:Name="addButton" HeightRequest="100" WidthRequest="100" TranslationY="0" TranslationX="0"  HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" >
+
+                </StackLayout>
             </StackLayout>
             
         </ContentPage.Content>

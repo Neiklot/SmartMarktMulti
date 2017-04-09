@@ -18,13 +18,13 @@ namespace SmartMarkt
                 Text = "Add"
             };
 
-            button.Clicked += (sender, e) =>
-            {
-                var Product = entry.Text;
-                var address = entry.Text;
+            //button.Clicked += (sender, e) =>
+            //{
+            //    var Product = entry.Text;
+            //    var address = entry.Text;
 
-                _database.AddProduct(Product, address,0);
-            };
+            //    _database.AddProduct(Product, address,0);
+            //};
 
             Content = new StackLayout
             {

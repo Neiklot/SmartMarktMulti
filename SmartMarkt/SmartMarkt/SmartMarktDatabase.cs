@@ -1,4 +1,5 @@
-﻿using SQLite.Net;
+﻿using SQLite;
+using SQLite.Net;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,18 +11,21 @@ namespace SmartMarkt
 {
     public class SmartMarktDatabase
     {
-        private SQLiteConnection _connection;
+        private readonly SQLite.SQLiteConnection sqlConnection;
 
         public SmartMarktDatabase()
         {
-            _connection = DependencyService.Get<ISQLite>().GetConnection();
-            _connection.CreateTable<Product>();
-            string path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SmartMarkt.txt");
+            const string filename = "SmartMarkt.db3";
+            var documentspath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var path = Path.Combine(documentspath, filename);
+            sqlConnection = new SQLite.SQLiteConnection(path);
+            sqlConnection.CreateTable<Product>();
+            //string path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SmartMarkt.txt");
         }
 
         public IEnumerable<Product> GetProducts()
         {
-            return (from t in _connection.Table<Product>()
+            return (from t in sqlConnection.Table<Product>()
                     select t).ToList();
         }
 
@@ -36,23 +40,24 @@ namespace SmartMarkt
             }
 
 
-            return _connection.Query<Product>(sql).AsEnumerable();
+            return sqlConnection.Query<Product>(sql).AsEnumerable();
         }
 
-        public void DeleteUset(int id)
+        public void DeleteUser(int id)
         {
-            _connection.Delete<Product>(id);
+            sqlConnection.Delete<Product>(id);
         }
 
-        public void AddProduct(string name, string address, long barCode)
+        public void AddProduct(string name, Double price, long barCode)
         {
             var newProduct = new Product
             {
                 name = name,
-                barCode = barCode
+                barCode = barCode,
+                price = price
             };
 
-            _connection.Insert(newProduct);
+            sqlConnection.Insert(newProduct);
         }
 
     }
